@@ -26,7 +26,7 @@
 	```bash
 	
 	apt-get update
-	apt-get install cpanminus git makepasswd rcs perl-doc libio-tee-perl git libmail-imapclient-perl libdigest-md5-file-perl libterm-readkey-perl libfile-copy-recursive-perl build-essential make automake libunicode-string-perl libauthen-ntlm-perl libcrypt-ssleay-perl libdigest-hmac-perl libfile-copy-recursive-perl libio-compress-perl libio-socket-inet6-perl libio-socket-ssl-perl libio-tee-perl libmodule-scandeps-perl libnet-ssleay-perl libpar-packer-perl libreadonly-perl libterm-readkey-perl libtest-pod-perl libtest-simple-perl libunicode-string-perl liburi-perl
+	apt-get install cpanminus git makepasswd rcs perl-doc libio-tee-perl git libmail-imapclient-perl libdigest-md5-file-perl libterm-readkey-perl libfile-copy-recursive-perl build-essential make automake libunicode-string-perl libauthen-ntlm-perl libcrypt-ssleay-perl libdigest-hmac-perl libfile-copy-recursive-perl libio-compress-perl libio-socket-inet6-perl libio-socket-ssl-perl libio-tee-perl libmodule-scandeps-perl libnet-ssleay-perl libpar-packer-perl libreadonly-perl libterm-readkey-perl libtest-pod-perl libtest-simple-perl libunicode-string-perl liburi-perl libdbd-mysql-perl
 	cpanm -i JSON::WebToken Test::MockObject Unicode::String Data::Uniqid
 	cd /tmp
 	git clone https://github.com/imapsync/imapsync
@@ -87,7 +87,7 @@ Appending `, 'imapsync'` to the list of plugins will suffice.
 	```
 8. Next step is to configure **cron** for regular mail checking with `sudo crontab -u mail -e` or change your `/etc/crontab`. For example for 5 minute intervals add this: `*/5 * * * * /var/mail/imapsync.pl >/dev/null 2>&1`. Worth noting that even if you configure cron for a 5 minutes interval, imapsync will still abide user configured checking interval. As a result setting bigger intervals here manifests them as intervals available to fetchmail, that is setting `0 * * * *` here overrides any user setting wich is less then hour
 
-9. You might also need to install `liblockfile-simple-perl` and ( `libsys-syslog-perl` or `libunix-syslog-perl` ) on **Debian**-based systems.
+9. You might also need to install `liblockfile-simple-perl`, `libdbd-mysql-perl` and ( `libsys-syslog-perl` or `libunix-syslog-perl` ) on **Debian**-based systems.
 
 ##Settings
 In case you need to edit default-set settings, you may copy `config.inc.php.dist` to `config.inc.php` and edit setings as desired in the latter file, which will override defaults.
